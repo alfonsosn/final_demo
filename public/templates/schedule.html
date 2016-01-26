@@ -1,0 +1,12 @@
+<h3 ng-show="schedules"> 
+            Which days does your class meet? 
+</h3> 
+<ul ng-show="schedules">
+    <button id="schedules" 
+            type="button" 
+            ng-repeat="sched in schedules" 
+            class="btn btn-secondary span2"
+            ng-click="getClasses(sched)">
+                {{sched}}
+    </button>
+<hr ng-show="schedules">
