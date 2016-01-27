@@ -1,30 +1,30 @@
 <!DOCTYPE html>
 <html>
     <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta name="description" content="">
         <title>Finals Schedule</title>
         <link rel="stylesheet" type="text/css" href="style.css" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap.min.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/2.3.2/css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="stylesheet/bootstrap/css/bootstrap.css">
+        <link rel="stylesheet" href="stylesheet/bootstrap/css/bootstrap-responsive.css">
     </head>
     
     <body ng-app="Finals">
         <div id="wrap" ng-controller='MainCtrl'>
             <div class="container">                
-                <h1>Welcome!</h1>
-                <div ng-include="'templates/buttons.html'"></div>
-                <div ng-include="'templates/schedule.html'"></div>
-                <div ng-include="'templates/finals.html'"></div>
-            </div>
-        </div>
-
-        <div id="footer">
-          <div class="container">
-            <p class="muted credit">App courtesy of Alfonso Enriquez</a>           
+                <div class="page-header">
+                    <h1> Welcome Student! </h1>
+                </div>
+                <div ng-include="'templates/buttons.html'"></div>   
+                <div class="row" ng-show="schedules" ng-include="'templates/schedule.html'"></div>
             </div>
         </div>
     </body>
+
 	<script src="angular.js"></script>
 	<script src="app.js"></script>
+    <script src="angular-ui-router.js"></script>
     <script src="controllers/main.controller.js"></script>
     <script src="factories/shedules.factory.js"></script>
     <script src="factories/classes.factory.js"></script>

@@ -1,1 +1,1 @@
-var app = angular.module('Finals', [])
+var app = angular.module('Finals', ['ui.router'])

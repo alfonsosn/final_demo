@@ -1,5 +1,13 @@
 app.controller('MainCtrl', function($scope, scheduleFactory, classesFactory){
-	
+	$scope.belowFour = function(curr){
+		if (curr <= 4) return curr
+	}
+
+	$scope.belowSeven = function(curr){
+		if (curr > 4) return curr
+	}
+
+
 	$scope.weeklySchedule = function(int){
 		$scope.classes = [];
 		$scope.schedules = [];

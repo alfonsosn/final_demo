@@ -1,12 +1,17 @@
-<h3> How long is your class?</h3>
-	<button type="button" 
-	        class="btn btn-primary span3" 
-	        ng-click="weeklySchedule(3)">
-	            3 hours
-	</button>
-	<button type="button" 
-	        class="btn btn-primary span3" 
-	        ng-click="weeklySchedule(4)">
-	            4 hours
-	</button>
-<hr>
+<div>
+	<p class="lead">How long is your class?</p>
+	<div class="row-fluid">
+		<button type="button" 
+		        class="btn btn-primary span6" 
+		        ng-click="weeklySchedule(3)"
+		        style="margin-bottom: 15px;">
+		            3 hours
+		</button>
+		<button 
+				type="button" 
+		        class="btn btn-primary span6" 
+		        ng-click="weeklySchedule(4)">
+		            4 hours
+		</button>
+	</div>
+</div>

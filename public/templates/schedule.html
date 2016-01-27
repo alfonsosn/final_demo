@@ -1,12 +1,29 @@
-<h3 ng-show="schedules"> 
-            Which days does your class meet? 
-</h3> 
-<ul ng-show="schedules">
-    <button id="schedules" 
-            type="button" 
-            ng-repeat="sched in schedules" 
-            class="btn btn-secondary span2"
-            ng-click="getClasses(sched)">
-                {{sched}}
-    </button>
-<hr ng-show="schedules">
+<p class="lead">When does your class meet?</p>
+	<div class="row-fluid">
+	    <button class="btn btn-secondary span3"
+	            ng-click="getClasses(sched)"
+	            ng-repeat="sched in schedules"
+	            ng-show="belowFour($index)"
+	            style="margin-bottom: 10px;">
+	            {{sched}}
+	    </button>
+	</div>
+	<div class="row-fluid">
+	    <button class="btn btn-secondary span3"
+	            ng-click="getClasses(sched)"
+	            ng-repeat="sched in schedules"
+	            ng-show="belowSeven($index)"
+	            style="margin-bottom: 10px;">
+	            {{sched}}
+	    </button>
+	</div>
+
+<!-- 	<div class="row-fluid">
+	    <button class="btn btn-secondary span3"
+	            ng-click="getClasses(sched)"
+	            ng-repeat="sched in schedules"
+	            ng-show="belowSeven($index)">
+	            {{$index}}{{sched}}
+	    </button>
+	</div> -->
+<div ng-include="'templates/finals.html'"></div>
