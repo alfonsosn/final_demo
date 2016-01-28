@@ -1,12 +1,14 @@
+<div>
 <table ng-show="classes.length > 0" class="table" style="width: 100%;">
 	<tr>
 		<th><p class="lead">If your class meets</p></th>
-		<th><p class="lead">Exam Schedule</p></th>
-	<tr>
+		<th><p class="lead">Your exam schedule</p></th>
+	</tr>
 	<tr ng-repeat="class in classes">
 		<td><p>{{class.classHours}} </td>
 		<td><p>{{class.examDate | date:'EEEE, MMMM d' }}</p> 
 			<p>{{class.examSched}}
 			</td>
-	<tr>
+	</tr>
 </table>
+</div>
