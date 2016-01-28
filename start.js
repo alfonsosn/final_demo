@@ -1,7 +1,3 @@
-var mongoose = require('mongoose');
-
-mongoose.connect('mongodb://localhost/fsg-app');
-
 // Grabbing our server from our server/index.js file.
 var server = require('./server');
 
