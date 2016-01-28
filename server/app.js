@@ -5,6 +5,8 @@ var express = require('express');
 var app = express(); 
 module.exports = app; 
 
+
+//let's see if changes anything
 //  Path of our public and index.html directory. 
 //  [ROOT]/public | [ROOT]/index.html
 var publicPath = path.join(__dirname, '../public');
