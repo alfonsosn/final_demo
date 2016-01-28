@@ -1,29 +1,20 @@
 <p class="lead">When does your class meet?</p>
 	<div class="row-fluid">
 	    <button class="btn btn-secondary span3"
-	            ng-click="getClasses(sched)"
 	            ng-repeat="sched in schedules"
-	            ng-show="belowFour($index)"
+	            ng-if="belowFour($index) || $first == true"
+	            ng-click="getClasses(sched)"
 	            style="margin-bottom: 10px;">
 	            {{sched}}
 	    </button>
 	</div>
 	<div class="row-fluid">
 	    <button class="btn btn-secondary span3"
-	            ng-click="getClasses(sched)"
 	            ng-repeat="sched in schedules"
-	            ng-show="belowSeven($index)"
+	            ng-if="belowSeven($index)"
+	            ng-click="getClasses(sched)"
 	            style="margin-bottom: 10px;">
 	            {{sched}}
 	    </button>
 	</div>
-
-<!-- 	<div class="row-fluid">
-	    <button class="btn btn-secondary span3"
-	            ng-click="getClasses(sched)"
-	            ng-repeat="sched in schedules"
-	            ng-show="belowSeven($index)">
-	            {{$index}}{{sched}}
-	    </button>
-	</div> -->
 <div ng-include="'templates/finals.html'"></div>

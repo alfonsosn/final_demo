@@ -17,7 +17,7 @@
                     <h1> Welcome Student! </h1>
                 </div>
                 <div ng-include="'templates/buttons.html'"></div>   
-                <div class="row" ng-show="schedules" ng-include="'templates/schedule.html'"></div>
+                <div class="row" ng-if="schedules" ng-include="'templates/schedule.html'"></div>
             </div>
         </div>
     </body>
