@@ -555,13 +555,16 @@ app.factory('classesFactory', function(){
 	var results = []
 	return {
 		getClasses: function(queryObj) {
-            console.log(queryObj)
 			if (queryObj.length === 3) {
-				results	= threeHoursSlots.filter(function (entry) { return entry.weeklySched === queryObj.weeklySched; });
+				results	= threeHoursSlots.filter(function (entry) { 
+                    return entry.weeklySched === queryObj.weeklySched; 
+                });
 				return results
 			}
 			else if (queryObj.length === 4) {
-				results	= fourHourClasses.filter(function (entry) { return entry.weeklySched === queryObj.weeklySched; });
+				results	= fourHourClasses.filter(function (entry) { 
+                    return entry.weeklySched === queryObj.weeklySched; 
+                });
 				return results
 			}
 		}
