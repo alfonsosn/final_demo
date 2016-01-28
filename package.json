@@ -4,9 +4,6 @@
     "express": "~4"
   },
   "scripts": {
-    "start": "nodemon -e js,html,css ./start.js"
-  },
-  "devDependencies": {
-    "nodemon": "~1"
+    "start": "node start.js"
   }
 }
