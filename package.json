@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "dependencies": {
     "bluebird": "^2.9.21",
-    "express": "^4.11.2",   
+    "express": "^4.11.2"
   }
   "private": true,
   "devDependencies": {
