@@ -1,7 +1,7 @@
 // Grabbing our server from our server/index.js file.
 var server = require('./server');
 
-var PORT = Numner(process.env.PORT || 8080);
+var PORT = Number(process.env.PORT || 8080);
 
 
 server.listen(PORT, function () {
