@@ -1,6 +1,5 @@
 var path = require('path');
 var express = require('express');
-var timeslots = require('./models/timeslots');
 
 //Creating an express app
 var app = express(); 
@@ -20,29 +19,6 @@ app.use(express.static(publicPath));
 app.get('/', function (req, res, next) {
     res.sendFile(indexHtmlPath);
 });
-
-
-// Code below was when querying objects from my mongo database.
-
-// app.get('/schedules', function (req, res, next) {
-//     timeslots.distinct("weeklySched", {length: req.query.length}, function (err, finals) {
-//    		if (err) return next(err);
-//         res.send(finals);
-//     })	
-// });
-
-// app.get('/classes', function (req, res, next) {
-//     timeslots.find({weeklySched: req.query.weeklySched, length: req.query.length},
-//     				{	length: false, weeklySched: false, finalClass: false,
-//                         examDay: false, finalDate: false, 
-//                         __v: false, _id: false},
-//     				function (err, finals) {
-//    		if (err) return next(err);
-//         res.send(finals);
-//     })	
-// });
-
-
 
 
 
