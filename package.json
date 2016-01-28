@@ -4,6 +4,6 @@
     "express": "^4.11.2"
   },
   "scripts": {
-    "start": "node start.js"
-}
+    "start": "npm start.js"
+  }
 }
