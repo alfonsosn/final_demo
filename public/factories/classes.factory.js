@@ -551,22 +551,23 @@ var fourHourClasses = [
     examSched: "6:20 - 8:20 pm"
 }];
 
+var results = []
+
 app.factory('classesFactory', function(){
-	var results = []
+	
 	return {
 		getClasses: function(queryObj) {
-			if (queryObj.length === 3) {
-				results	= threeHoursSlots.filter(function (entry) { 
+			if (queryObj.length === 3)   results	= threeHoursSlots
+			else if (queryObj.length === 4) results	= fourHourClasses
+                
+            return results.filter(function (entry) { 
                     return entry.weeklySched === queryObj.weeklySched; 
                 });
-				return results
-			}
-			else if (queryObj.length === 4) {
-				results	= fourHourClasses.filter(function (entry) { 
-                    return entry.weeklySched === queryObj.weeklySched; 
-                });
-				return results
-			}
-		}
+		},
+        
+        clearClasses: function(){
+            results = []
+            return results;
+        }
 	}
 })

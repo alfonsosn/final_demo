@@ -1,22 +1,27 @@
-<div>
-<p class="lead">When does your class meet?</p>
-	<div class="row-fluid">
-	    <button class="btn btn-secondary span3"
-	            ng-repeat="sched in schedules"
-	            ng-if="belowFour($index) || $first == true"
-	            ng-click="getClasses(sched)"
-	            style="margin-bottom: 10px;">
-	            {{sched}}
-	    </button>
-	</div>
-	<div class="row-fluid">
-	    <button class="btn btn-secondary span3"
-	            ng-repeat="sched in schedules"
-	            ng-if="belowSeven($index)"
-	            ng-click="getClasses(sched)"
-	            style="margin-bottom: 10px;">
-	            {{sched}}
-	    </button>
-	</div>
-<div ng-include="'templates/finals.html'"></div>	
+<div ng-if="schedule.length > 0">
+
+	<p class="lead" style="font-size: 16px;">Which days do you meet?</p>
+		<div class="row-fluid">
+		    <button class="btn btn-secondary span3"
+		            ng-repeat="sched in schedule"
+		            ng-if="belowFour($index) || $first == true"
+		            ng-click="getClasses(sched)"
+		            style="margin-bottom: 10px;"
+		            ui-sref="final"
+		            >
+		            {{sched}}
+		    </button>
+		</div>
+		<div class="row-fluid">
+		    <button class="btn btn-secondary span3"
+		            ng-repeat="sched in schedule"
+		            ng-if="belowSeven($index)"
+		            ng-click="getClasses(sched)"
+		            style="margin-bottom: 10px;"
+		            ui-sref="final"
+		            >
+		            {{sched}}
+		    </button>
+		</div>	
 </div>
+

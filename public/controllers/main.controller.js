@@ -1,26 +1,25 @@
-app.controller('MainCtrl', function($scope, scheduleFactory, classesFactory){
-	$scope.belowFour = function(curr){
-		if (curr < 4) return curr
+app.controller('MainCtrl', function($scope, $rootScope, scheduleFactory, $state, $location, $anchorScroll){
+
+	$scope.clear = function(){
+		$rootScope.schedule = []
+		$rootScope.classes  = []
 	}
 
-	$scope.belowSeven = function(curr){
-		if (curr >= 4) return curr - 1;
-	}
+   	$scope.scrollTo = function(id) {
+      	$location.hash(id);
+      	$anchorScroll();
+  	}
 
+	$scope.jumpback = function(){
+		$scope.clear();
+		$state.transitionTo('home');
+		$scope.scrollTo('page-header');
+	}	
+
+  	//factory calls
 	$scope.weeklySchedule = function(num){
-		$scope.classes = []
-		$scope.schedules = []
-		$scope.length = num
-		$scope.schedules = scheduleFactory.getClassesSchedule(num)
-	},
-
-	$scope.getClasses = function(string){
-		var queryObj = {
-			length : $scope.length,
-			weeklySched : string 
-		}
-
-		$scope.classes = classesFactory.getClasses(queryObj)		
+		$scope.clear();
+		$rootScope.length = num
+		$rootScope.schedule = scheduleFactory.createSchedule(num)
 	}
-
 });

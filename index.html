@@ -13,19 +13,23 @@
     <body ng-app="Finals">
         <div id="wrap" ng-controller='MainCtrl'>
             <div class="container">                
-                <div class="page-header">
-                    <h1> Welcome Student! </h1>
+                <div id="page-header">
+                    <h1> Finals at Hunter! </h1>
+                    <p class="lead">Get your Spring 2016 schedule!</p>
+                </div>                 
+                    <div ui-view></div>
                 </div>
-                <div ng-include="'templates/buttons.html'"></div>   
-                <div ng-if="schedules" ng-include="'templates/schedule.html'"></div>
-            </div>
         </div>
+
+        
     </body>
 
 	<script src="angular.js"></script>
-	<script src="app.js"></script>
     <script src="angular-ui-router.js"></script>
+    <script src="app.js"></script>
     <script src="controllers/main.controller.js"></script>
+    <script src="controllers/schedule.controller.js"></script>
+    <script src="controllers/classes.controller.js"></script>
     <script src="factories/shedules.factory.js"></script>
     <script src="factories/classes.factory.js"></script>
 </html>

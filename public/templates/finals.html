@@ -1,5 +1,5 @@
-<div>
-<table ng-show="classes.length > 0" class="table" style="width: 100%;">
+<section id="pheader" ng-if="classes.length > 0">
+<table class="table" style="width: 100%;">
 	<tr>
 		<th><p class="lead">If your class meets</p></th>
 		<th><p class="lead">Your exam schedule</p></th>
@@ -11,4 +11,5 @@
 			</td>
 	</tr>
 </table>
-</div>
+<button class='btn btn-success' style="font-size: 18px; margin-bottom: 15px; margin: auto;" ng-click="jumpback()">try again!</button>
+</section>

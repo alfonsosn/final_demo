@@ -1,17 +1,20 @@
 <div>
-	<p class="lead">How long is your class?</p>
+	<p class="lead" style="font-size: 16px;">How long is your class?</p>
 	<div class="row-fluid">
 		<button type="button" 
 		        class="btn btn-primary span6" 
 		        ng-click="weeklySchedule(3)"
-		        style="margin-bottom: 15px;">
-		            3 hours
+		        style="margin-bottom: 15px;"
+		        ui-sref="schedule">
+		            3 hours a week
 		</button>
 		<button 
 				type="button" 
 		        class="btn btn-primary span6" 
-		        ng-click="weeklySchedule(4)">
-		            4 hours
+		        ng-click="weeklySchedule(4)"
+		        style="margin-bottom: 15px;"
+		        ui-sref="schedule">
+		            4 hours a week
 		</button>
 	</div>
 </div>

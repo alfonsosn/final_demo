@@ -1,6 +1,6 @@
 {
   "name": "finals-demo",
-  "version": "1.0.0",
+  "version": "1.5.0",
   "description": "app for finals scheduling",
   "main": "start.js",
   "dependencies": {
