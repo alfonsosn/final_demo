@@ -8,9 +8,9 @@ app.factory('scheduleFactory', function(){
 		},
 
 		createSchedule: function(num){
-			if (num === 3) schedule = threeHours 
+			if (num === 3) schedule = threeHours
 			if (num === 4) schedule = fourHours
-		
+
 			return schedule.sort()
 		},
 
