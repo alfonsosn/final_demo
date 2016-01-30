@@ -1,4 +1,4 @@
-<div ng-if="schedule.length > 0">
+<div ng-controller="schedCtrl" ui-view>
 
 	<p class="lead" style="font-size: 16px;">Which days do you meet?</p>
 		<div class="row-fluid">
@@ -7,7 +7,7 @@
 		            ng-if="belowFour($index) || $first == true"
 		            ng-click="getClasses(sched)"
 		            style="margin-bottom: 10px;"
-		            ui-sref="final"
+		            ui-sref="classLength.schedule({schedule:'{{sched}}'})"
 		            >
 		            {{sched}}
 		    </button>
@@ -18,7 +18,7 @@
 		            ng-if="belowSeven($index)"
 		            ng-click="getClasses(sched)"
 		            style="margin-bottom: 10px;"
-		            ui-sref="final"
+		            ui-sref="classLength.schedule({schedule:'{{sched}}'})"
 		            >
 		            {{sched}}
 		    </button>

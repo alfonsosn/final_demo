@@ -1,4 +1,6 @@
-app.controller('MainCtrl', function($scope, $rootScope, scheduleFactory, $state, $location, $anchorScroll){
+app.controller('MainCtrl', function($scope, $rootScope, 
+	scheduleFactory, $state, 
+	$location, $anchorScroll){
 
 	$scope.clear = function(){
 		$rootScope.schedule = []
@@ -17,9 +19,7 @@ app.controller('MainCtrl', function($scope, $rootScope, scheduleFactory, $state,
 	}	
 
   	//factory calls
-	$scope.weeklySchedule = function(num){
-		$scope.clear();
-		$rootScope.length = num
-		$rootScope.schedule = scheduleFactory.createSchedule(num)
+	$scope.weeklySchedule = function(){
+		$rootScope.schedule = scheduleFactory.createSchedule($rootScope.length)
 	}
 });

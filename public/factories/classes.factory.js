@@ -559,7 +559,7 @@ app.factory('classesFactory', function(){
 		getClasses: function(queryObj) {
 			if (queryObj.length === 3)   results	= threeHoursSlots
 			else if (queryObj.length === 4) results	= fourHourClasses
-                
+
             return results.filter(function (entry) { 
                     return entry.weeklySched === queryObj.weeklySched; 
                 });
