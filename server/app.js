@@ -2,12 +2,12 @@ var path = require('path');
 var express = require('express');
 
 //Creating an express app
-var app = express(); 
-module.exports = app; 
+var app = express();
+module.exports = app;
 
 
 //let's see if changes anything
-//  Path of our public and index.html directory. 
+//  Path of our public and index.html directory.
 //  [ROOT]/public | [ROOT]/index.html
 var publicPath = path.join(__dirname, '../public');
 var indexHtmlPath = path.join(__dirname, '../index.html');
@@ -21,12 +21,3 @@ app.use(express.static(publicPath));
 app.get('/', function (req, res, next) {
     res.sendFile(indexHtmlPath);
 });
-
-
-
-
-
-
-
-
-

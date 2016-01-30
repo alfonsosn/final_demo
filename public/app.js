@@ -28,4 +28,3 @@ var app = angular.module('Finals', ['ui.router'])
 	.run(['$state', function ($state) {
 		$state.transitionTo('home');
 	}])
-

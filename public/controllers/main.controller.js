@@ -16,7 +16,7 @@ app.controller('MainCtrl', function($scope, $rootScope,
 		$scope.clear();
 		$state.transitionTo('home');
 		$scope.scrollTo('page-header');
-	}	
+	}
 
   	//factory calls
 	$scope.weeklySchedule = function(){
