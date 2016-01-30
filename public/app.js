@@ -14,8 +14,7 @@ var app = angular.module('Finals', ['ui.router'])
 				url: '/final',
 				templateUrl: 'templates/finals.html'
 			})
-		}) 
+		})
 	app.run(['$state', function ($state) {
 		$state.transitionTo('home');
 	}])
-

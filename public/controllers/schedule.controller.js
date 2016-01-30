@@ -10,7 +10,7 @@ app.controller('schedCtrl', function($scope, classesFactory, $rootScope) {
 	$scope.getClasses = function(string){
 		var queryObj = {
 			length : $scope.length,
-			weeklySched : string 
+			weeklySched : string
 		}
 		$rootScope.classes = classesFactory.getClasses(queryObj)
 		console.log($rootScope.classes)
