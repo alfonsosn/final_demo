@@ -4,12 +4,25 @@
 		<th><p class="lead">If your class meets</p></th>
 		<th><p class="lead">Your exam schedule</p></th>
 	</tr>
-	<tr ng-repeat="class in classes">
+	<tr ng-repeat="class in classes" ng-click="addToSchedule(class)">
 		<td><p>{{class.classHours}} </td>
-		<td><p>{{class.examDate | date:'EEEE, MMMM d' }}</p>
-			<p>{{class.examSched}}
+		<td><p>{{class.examDate | date:'EEEE, MMMM d' }} 
+			<img 	id="checkmark" 
+				  	src="stylesheet/images/checkmark.svg" 
+					ng-hide='checker'></img>
+			</p>
+			<p>{{class.examSched}}</p>
 			</td>
 	</tr>
 </table>
-<button class='btn btn-success' style="font-size: 18px; margin-bottom: 15px; margin: auto;" ng-click="jumpback()">try again!</button>
+<button class='btn btn-success' 
+	style="font-size: 18px; margin-bottom: 15px; float: left;" 
+	ng-click="jumpback()">
+	try again!
+</button>
+<button class='btn btn-info' 
+	style="font-size: 18px; margin-bottom: 15px; float:right;" 
+	ng-click="download()">
+	Download!
+</button>
 </section>

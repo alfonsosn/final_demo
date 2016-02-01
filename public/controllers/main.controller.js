@@ -2,6 +2,8 @@ app.controller('MainCtrl', function($scope, $rootScope,
 	scheduleFactory, $state, 
 	$location, $anchorScroll){
 
+	$rootScope.finalsSchedule = []
+
 	$scope.clear = function(){
 		$rootScope.schedule = []
 		$rootScope.classes  = []

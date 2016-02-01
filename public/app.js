@@ -15,14 +15,8 @@ var app = angular.module('Finals', ['ui.router'])
 			})
 			.state('classLength.schedule', {
 				url: '/:schedule',
-		      	controller: function($rootScope, $stateParams, classesFactory) {
-		      		var queryObj = {
-							length : parseInt($rootScope.length),
-							weeklySched : $stateParams.schedule
-						}
-		      		$rootScope.classes = classesFactory.getClasses(queryObj)
-		      	},
-		      	templateUrl: 'templates/finals.html'	
+		      	controller: 'classCtrl',
+		      	templateUrl: 'templates/finals.html',
 			})
 		}) 
 	.run(['$state', function ($state) {
