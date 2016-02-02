@@ -28,5 +28,5 @@ app.get('/', function (req, res, next) {
 
 app.post('/schedule', function (req, res, next) {
    	console.log(req.body.params)
-   	res.send("fuck you")
+   	
 });
