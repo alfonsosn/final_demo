@@ -4,12 +4,12 @@
 		<th><p class="lead">If your class meets</p></th>
 		<th><p class="lead">Your exam schedule</p></th>
 	</tr>
-	<tr ng-repeat="class in classes" ng-click="addToSchedule(class)">
+	<tr ng-repeat="class in classes" ng-click="addToSchedule(class)" style="cursor:pointer">
 		<td><p>{{class.classHours}} </td>
 		<td><p>{{class.examDate | date:'EEEE, MMMM d' }} 
 			<img 	id="checkmark" 
 				  	src="stylesheet/images/checkmark.svg" 
-					ng-hide='checker'></img>
+					ng-show='classAddedToRS(class.$$hashKey)'></img>
 			</p>
 			<p>{{class.examSched}}</p>
 			</td>

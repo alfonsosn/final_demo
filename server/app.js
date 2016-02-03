@@ -28,14 +28,12 @@ app.get('/', function (req, res, next) {
 });
 
 app.post('/', function (req, res, next) {
-   	if (req.body.params.length == 0) {
-   		console.log("fuck off")
-   		res.send("haven't specified anything")
-   	}
-   	
+   	if (req.body.params.length == 0) 
+      res.send("nothing to download")
+
    	fs.writeFile('finals.ics', writeConstructor(req.body.params), function(err){
-   		var finalsPath = path.join(__dirname, '../finals.ics');
-  		if (err) throw err;
-  		res.sendFile(finalsPath)
-	});
+  		  if (err) throw err;
+        var file = 'finals.ics';
+  		  res.download(file)
+	   });
 });

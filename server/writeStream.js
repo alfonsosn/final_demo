@@ -13,21 +13,12 @@ var createEvent = function(exam) {
 	this.DTSTART = "",
 	this.DTEND = "",
 
-	/*
-		functional for program - padding and month
-	*/
-
 	this.padding = function(number) {
 		if (number < 10) return '0' + number
 		else return	number
 	},
 
 	/////// PROPERTIES OF CONSTRUCTOR ////////
-
-	/*
-		obtains duration hours and mins where exam start
-		has to parse due to colon
-	*/
 
 	this.parseHourAndMin = function() {
 		if (this.duration[1] === ':') {
@@ -104,4 +95,3 @@ var createCalendarData = function(arr){
 }
 
 module.exports = createCalendarData;
-

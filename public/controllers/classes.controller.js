@@ -8,11 +8,21 @@ app.controller('classCtrl', function($scope, $rootScope,
 	
 	$scope.addToSchedule = function(classToAdd) {
 		finalsFactory.addFinals(classToAdd);
-		console.log(finalsFactory.obtainFinals())
+		
 	}
 
 	$scope.download = function(){
 		finalsFactory.downloadFinals()
+	}
+
+	$scope.classAddedToRS = function(key){
+		var checker = finalsFactory.obtainFinals()
+  		for (var i = 0; i < checker.length; i++) {
+    		if (checker[i].$$hashKey === key) {
+      			return true;
+    		}
+  		}
+  		return false;
 	}
 })
 
