@@ -1,7 +1,8 @@
 var path = require('path');
 var express = require('express');
 var bodyParser = require('body-parser')
-// var fs = require
+var writeConstructor = require('./writeStream')
+var fs = require('fs')
 
 //Creating an express app
 var app = express();
@@ -26,7 +27,15 @@ app.get('/', function (req, res, next) {
     res.sendFile(indexHtmlPath);
 });
 
-app.post('/schedule', function (req, res, next) {
-   	console.log(req.body.params)
+app.post('/', function (req, res, next) {
+   	if (req.body.params.length == 0) {
+   		console.log("fuck off")
+   		res.send("haven't specified anything")
+   	}
    	
+   	fs.writeFile('finals.ics', writeConstructor(req.body.params), function(err){
+   		var finalsPath = path.join(__dirname, '../finals.ics');
+  		if (err) throw err;
+  		res.sendFile(finalsPath)
+	});
 });

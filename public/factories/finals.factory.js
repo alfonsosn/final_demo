@@ -13,7 +13,7 @@ app.factory('finalsFactory', function($http){
 				params: finalsAdded
 			}
 			
-			return $http.post('/schedule', obj)
+			return $http.post('/', obj)
 			.then(function (res) {
 				console.log(res)
 			})

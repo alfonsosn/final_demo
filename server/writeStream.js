@@ -1,102 +1,107 @@
-var fs = require('fs');
+var createEvent = function(exam) {
+	this.date = exam.examDate,
+	this.duration = exam.examSched,
 
-function createEvent(examSchedule){
-		this.date = examSchedule.examDate,
-		this.fullSched = examSchedule.examSched,
+	this.hour = "",
+	this.min  = "",
+	this.ISOstring = "",
 
-		this.hours = "",
-		this.mins  = "",
-		this.startTime = "",
-		this.endTime = "",
-		this.string = "",
-		this.DSTAMP  = "",
-		this.DTSTART = "",
-		this.DTEND = "",
+	this.startTime = "",
+	this.endTime = "",
 
-		this.parseHoursAndMins = function() {
-			if (this.fullSched[1] === ':') {
-				this.hours  = "0" + this.fullSched[0]
-				this.mins = this.fullSched.substr(2, 2)
-			}
-			else {
-				this.hours  = this.fullSched.substr(0, 2)
-				this.mins = this.fullSched.substr(3, 2)
-			}
-		},
+	this.DSTAMP  = "",
+	this.DTSTART = "",
+	this.DTEND = "",
 
-		this.padding = function(number) {
-			if (number < 10) return '0' + number
-			else return	number
-		},
+	/*
+		functional for program - padding and month
+	*/
 
-		this.getFullMonth = function(){
-			var month = this.date.getMonth() + 1
-			if (month < 10) return "0" + month
-			else return month
-		},
+	this.padding = function(number) {
+		if (number < 10) return '0' + number
+		else return	number
+	},
+
+	/////// PROPERTIES OF CONSTRUCTOR ////////
+
+	/*
+		obtains duration hours and mins where exam start
+		has to parse due to colon
+	*/
+
+	this.parseHourAndMin = function() {
+		if (this.duration[1] === ':') {
+			this.hour  = "0" + this.duration[0]
+			this.min = this.duration.substr(2, 2)
+		}
+		else {
+			this.hour  = this.duration.substr(0, 2)
+			this.min = this.duration.substr(3, 2)
+		}
+	},
+
+
+	this.getExamDateISO = function(){
+		this.ISOstring = this.date.split('-').join("")
+								  .split('.').join("")
+								  .split(':').join("")
+								  .slice(0, -10);
+	},
+
+	this.getHourAndMin = function(){
+		this.parseHourAndMin()
+		if (this.duration.indexOf('am') === -1) 
+			this.hour = (parseInt(this.hour) + 12).toString()
 		
-		this.parsedDate = function(){
-			this.string += this.date.getFullYear()
-			this.string += this.getFullMonth()
-			this.string += this.date.getDate()
-			this.string += 'T'
-			return this.string
-		},
+		this.startTime = this.hour + this.min + "00"
+		this.endTime = this.padding((parseInt(this.hour) + 2)).toString() + this.min + "00"
+	},
 
-		this.getHours = function(){
-			this.parseHoursAndMins()
-			if (this.fullSched.indexOf('am') === -1) this.hours = (parseInt(this.hours) + 12).toString()
-			this.startTime = this.hours + this.mins + "00"
-			this.endTime = this.padding((parseInt(this.hours) + 2)).toString() + this.mins + "00"
-		},
+	this.getStamps = function () {
+		this.DTSTART = this.ISOstring + this.startTime
+		this.DTEND = this.ISOstring + this.endTime
+		var today = new Date();
+		this.DSTAMP = today.toISOString().split('-').join("")
+										 .split('.').join("")
+										 .split(':').join("")
+										 .slice(0, -4) + 'Z'
+	},
 
-		this.getDStamp = function () {
-			var today = new Date();
-			this.DSTAMP = today.toISOString().split('-').join("").split('.').join("").split(':').join("").slice(0, -4) + 'Z'
-		},
-
-		this.getSchedules = function() {
-			this.parsedDate()
-			this.getHours()
-			this.DTSTART = this.string + this.startTime
-			this.DTEND = this.string + this.endTime
-			this.getDStamp()
-		}
-
-		this.eventString = function() {
-			return '\n'+ "BEGIN:VEVENT" + '\n' +
-			"DTSTAMP:" + this.DSTAMP 	+ '\n' + 
-			"DTSTART:" + this.DTSTART 	+ '\n' + 
-			"DTEND:"   + this.DTEND 	+ '\n' + 
-			"SUMMARY:FINAL EXAM" 		+ '\n' +
-			"LOCATION:HUNTER" 			+ '\n' +
-			"UID:"		+ this.DSTAMP +  "@warm-mesa-70826.herokuapp.com" + '\n' +
-			"END:VEVENT" 
-		}
+	this.getSchedules = function() {
+		this.getExamDateISO()
+		this.getHourAndMin()
+		this.getStamps()
 	}
+	
+	this.printEventString = function() {
+		this.getSchedules();
 
-var eventContents = function(arr){
-	var calendar = ""
+		return '\n'+ "BEGIN:VEVENT" + '\n' +
+		"DTSTAMP:" + this.DSTAMP 	+ '\n' + 
+		"DTSTART:" + this.DTSTART 	+ '\n' + 
+		"DTEND:"   + this.DTEND 	+ '\n' + 
+		"SUMMARY:FINAL EXAM" 		+ '\n' +
+		"LOCATION:HUNTER" 			+ '\n' +
+		"UID:"		+ this.DSTAMP +  "@warm-mesa-70826.herokuapp.com" + '\n' +
+		"END:VEVENT" 
+	}
+}
+
+var createCalendarData = function(arr){
+	var calendar = 	"BEGIN:VCALENDAR" 			+ '\n' +
+					"VERSION:2.0"				+ '\n' +
+					"CALSCALE:GREGORIAN"		+ '\n' +
+					"X-WR-CALNAME:My FINALS";
+
 	arr.forEach(function(element){
 		var obj = new createEvent(element)
-		obj.getSchedules()
-		calendar += obj.eventString()
+		calendar += obj.printEventString()
 	})
+
+	calendar += '\n' + "END:VCALENDAR";
+
 	return calendar
 }
 
-var calendarString =
-		"BEGIN:VCALENDAR" 			+ '\n' +
-		"VERSION:2.0"				+ '\n' +
-		"CALSCALE:GREGORIAN"		+ '\n' +
-		"X-WR-CALNAME:My FINALS"    + 
-		eventContents(array)		+
-		'\n' + "END:VCALENDAR";
-
-// console.log(calendarString)
-
-// fs.writeFile('finals.ics', calendarString, function(err){
-//   if (err) throw err;
-//   console.log('It\'s saved!');
-// });
+module.exports = createCalendarData;
 
