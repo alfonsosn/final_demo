@@ -11,7 +11,7 @@ module.exports = app;
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: false}));
 
-//let's see if changes anything
+
 //  Path of our public and index.html directory.
 //  [ROOT]/public | [ROOT]/index.html
 var publicPath = path.join(__dirname, '../public');
@@ -29,11 +29,8 @@ app.get('/', function (req, res, next) {
 
 app.post('/', function (req, res, next) {
    	if (req.body.params.length == 0) 
-      res.send("nothing to download")
-
-   	fs.writeFile('finals.ics', writeConstructor(req.body.params), function(err){
-  		  if (err) throw err;
-        var file = 'finals.ics';
-  		  res.download(file)
-	   });
+      res.send("nothing to send")
+   	fs.writeFile(publicPath + '/uploads/finals.ics', writeConstructor(req.body.params))
 });
+
+

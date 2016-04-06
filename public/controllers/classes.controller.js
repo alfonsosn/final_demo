@@ -1,18 +1,17 @@
 app.controller('classCtrl', function($scope, $rootScope, 
-	$stateParams, classesFactory, finalsFactory) {
+	$stateParams,  $state, classesFactory, finalsFactory) {
 	var queryObj = {
 			length : parseInt($rootScope.length),
 			weeklySched : $stateParams.schedule
 		}
+		
 	$rootScope.classes = classesFactory.getClasses(queryObj)
 	
-	$scope.addToSchedule = function(classToAdd) {
+	$scope.addToSchedule = function(classToAdd) 
+	{
+		// console.log(finalsFactory.obtainFinals())
 		finalsFactory.addFinals(classToAdd);
-		
-	}
-
-	$scope.download = function(){
-		finalsFactory.downloadFinals()
+		return finalsFactory.obtainFinals().length
 	}
 
 	$scope.classAddedToRS = function(key){
@@ -24,5 +23,13 @@ app.controller('classCtrl', function($scope, $rootScope,
   		}
   		return false;
 	}
+
+
+	$scope.updateFile = function(deleteClass) {
+		$scope.addToSchedule(deleteClass);
+		finalsFactory.downloadFinals();
+	}
+
+	$scope.finalsAdded = finalsFactory.obtainFinals();
 })
 

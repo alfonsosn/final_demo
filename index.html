@@ -8,19 +8,22 @@
         <link rel="stylesheet" href="stylesheet/bootstrap/css/bootstrap.css">
         <link rel="stylesheet" href="stylesheet/bootstrap/css/bootstrap-responsive.css">
         <link rel="stylesheet" type="text/css" href="style.css" />
+        <link href='https://fonts.googleapis.com/css?family=Montserrat' rel='stylesheet' type='text/css'>
+        <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
     </head>
 
     <body ng-app="Finals">
         <div id="wrap" ng-controller='MainCtrl'>
             <div class="container">
-                <div id="page-header">
-                    <h1> Finals at Hunter! </h1>
+                <div id="page-header" display='flex'>
+                    <h1> Finals at Hunter </h1>
                     <p class="lead">Get your Spring 2016 schedule!</p>
                 </div>
-                    <div ui-view></div>
+                <br>
+                <div id="ui-view" ui-view>
+                </div>
                 </div>
         </div>
-
 
     </body>
 

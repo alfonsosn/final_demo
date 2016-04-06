@@ -1,12 +1,11 @@
 app.controller('MainCtrl', function($scope, $rootScope, 
-	scheduleFactory, $state, 
+	scheduleFactory, $state, finalsFactory,
 	$location, $anchorScroll){
 
 	$rootScope.finalsSchedule = []
 
 	$scope.clear = function(){
-		$rootScope.schedule = []
-		$rootScope.classes  = []
+		finalsFactory.clearFinals();
 	}
 
    	$scope.scrollTo = function(id) {
@@ -18,7 +17,18 @@ app.controller('MainCtrl', function($scope, $rootScope,
 		$scope.clear();
 		$state.transitionTo('home');
 		$scope.scrollTo('page-header');
+	}	
+
+	$scope.download = function(){
+		finalsFactory.downloadFinals()
 	}
+
+	$scope.jumpfwd = function(){
+		finalsFactory.downloadFinals();
+		console.log("what the fuck")
+		$state.transitionTo('calendar');
+	};
+
 
   	//factory calls
 	$scope.weeklySchedule = function(){

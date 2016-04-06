@@ -1,4 +1,5 @@
-app.controller('schedCtrl', function($scope, classesFactory, $rootScope) {
+app.controller('schedCtrl', function($scope, classesFactory, $rootScope, finalsFactory) {
+
 	$scope.belowFour = function(curr){
 		if (curr < 4) return curr
 	}

@@ -5,6 +5,11 @@ var app = angular.module('Finals', ['ui.router'])
 				url: '/',
 				templateUrl: 'templates/buttons.html'
 			})
+			.state('calendar',{
+				url: '/calendar',
+				controller: 'classCtrl',
+				templateUrl: 'templates/calendar.html'
+			})
 			.state('classLength', {
 				url: '/:hours',
 				controller: function($rootScope, $stateParams, $state, scheduleFactory){
@@ -16,7 +21,7 @@ var app = angular.module('Finals', ['ui.router'])
 			.state('classLength.schedule', {
 				url: '/:schedule',
 		      	controller: 'classCtrl',
-		      	templateUrl: 'templates/finals.html',
+		      	templateUrl: 'templates/finals.html'
 			})
 		}) 
 	.run(['$state', function ($state) {

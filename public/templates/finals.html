@@ -1,28 +1,22 @@
+<div>
+	<p class="lead" style="font-size: 18px;">Click the schedule of your class to add it to your finals calendar.
+</div>
+
 <section id="pheader" ng-if="classes.length > 0">
-<table class="table" style="width: 100%;">
-	<tr>
-		<th><p class="lead">If your class meets</p></th>
-		<th><p class="lead">Your exam schedule</p></th>
-	</tr>
-	<tr ng-repeat="class in classes" ng-click="addToSchedule(class)" style="cursor:pointer">
-		<td><p>{{class.classHours}} </td>
-		<td><p>{{class.examDate | date:'EEEE, MMMM d' }} 
-			<img 	id="checkmark" 
-				  	src="stylesheet/images/checkmark.svg" 
-					ng-show='classAddedToRS(class.$$hashKey)'></img>
-			</p>
-			<p>{{class.examSched}}</p>
-			</td>
-	</tr>
-</table>
-<button class='btn btn-success' 
-	style="font-size: 18px; margin-bottom: 15px; float: left;" 
-	ng-click="jumpback()">
-	try again!
-</button>
-<button class='btn btn-info' 
-	style="font-size: 18px; margin-bottom: 15px; float:right;" 
-	ng-click="download()">
-	Download!
-</button>
+	<table class="table" style="width: 100%;">
+		<tr>
+			<th><p class="lead">If your class meets</p></th>
+			<th><p class="lead">Your exam schedule</p></th>
+		</tr>
+		<tr ng-repeat="class in classes" ng-click="addToSchedule(class)" style="cursor:pointer">
+			<td><p>{{class.classHours}} </td>
+			<td><p>{{class.examDate | date:'EEEE, MMMM d' }} 
+				<img 	id="checkmark" 
+					  	src="stylesheet/images/checkmark.svg" 
+						ng-show='classAddedToRS(class.$$hashKey)'></img>
+				</p>
+				<p>{{class.examSched}}</p>
+				</td>
+		</tr>
+	</table>
 </section>

@@ -22,12 +22,7 @@ app.factory('finalsFactory', function($http){
 			var obj = {
 				params: finalsAdded
 			}
-			
 			return $http.post('/', obj, {responseType:'arraybuffer'})
-			.then(function (res) {
-				console.log(res)
-				// saveAs(file, 'finals.ics');
-			})
 		},
 		clearFinals: function(){
 			finalsAdded = []

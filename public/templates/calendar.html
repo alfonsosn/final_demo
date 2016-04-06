@@ -1,0 +1,33 @@
+<div class="card" style="position: relative;" ng-controller="schedCtrl" ui-view>
+	<p class="lead" style="font-size: 18px;">Your exam schedule for {{finalsAdded.length}} exams:</p>
+	<div class="card" ng-hide="finalsAdded.length == 0" ng-repeat="finals in finalsAdded" ng-click="updateFile(finals)">
+		<p class="lead"> {{finals.examDate | date:'EEEE, MMMM d' }} 
+		| {{finals.examSched}}
+	</div>
+</div>
+
+<div class="card" style="position: relative;">
+
+	<button class='btn btn-success' 
+		style="font-size: 18px; margin-bottom: 15px;" 
+		ng-click="jumpback()">
+		start over
+	</button>
+
+	<button class='btn btn-danger' 
+		style="font-size: 18px; margin-left: 15px; margin-bottom: 15px; float:right;" 
+		ng-click="clear()">
+		clear
+	</button>
+	
+	<a class='btn btn-primary' 
+		target="_self"
+		style="font-size: 18px; margin-bottom: 15px; float:right;" 
+		href="/uploads/finals.ics"
+		download="finals.ics"
+		ng-hide="finalsAdded.length == 0"
+		>
+		download!
+	</a>
+
+</div>
